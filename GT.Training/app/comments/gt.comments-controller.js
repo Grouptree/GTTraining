@@ -48,7 +48,7 @@
                                 
                 if (result.data === 'true') {
                     for (var i = 0; i < self.comments.length; i++) {
-                        if (self.comments[i].PointerID === commentPointerID) {
+                        if (self.comments[i].pointerID === commentPointerID) {
                             self.comments.splice(i, 1);
                             break;
                         }
