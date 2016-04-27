@@ -1,0 +1,136 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+/* styles for validation helpers */
+.field-validation-error {
+    color: #b94a48;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+input.input-validation-error {
+    border: 1px solid #b94a48;
+}
+
+input[type="checkbox"].input-validation-error {
+    border: 0 none;
+}
+
+.validation-summary-errors {
+    color: #b94a48;
+}
+
+.validation-summary-valid {
+    display: none;
+}
+
+.main-content {
+    margin-top: 20px;
+}
+
+.logo-row {
+    border-bottom: 1px solid #e6e6e6;
+    padding-bottom: 20px;
+}
+
+/*
+    Breacrumbs
+*/
+.breadcrumb {
+    font-size: 12px;
+}
+
+/*
+    Side Nav    
+*/
+
+.sidenav {    
+    font-size: 13px;
+}
+
+.sidenav > ul > .list-group-item {
+    padding: 0px;
+}
+
+    .sidenav .list-group-item {
+        margin-top: 5px;
+        border: none;
+    }
+
+.sidenav-active > a {
+    background-color: #e6e6e6;    
+    border-radius: 5px;
+    padding: 6px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    display: inline-block;
+}
+
+    a.active { 
+        text-decoration: underline;
+    }
+
+    ul.list-group li li {     
+        border: none;       
+    }
+
+    li.list-group-item.active, li.list-group-item.active:hover {
+        background-color: #fff;
+    }
+
+        li.list-group-item.active a {
+            color: #333;
+        }
+
+.news-comment-heading {
+    padding: 0px;
+    padding-left: 13px;    
+}
+
+    .news-comment-heading h6 {
+        margin-top: 5px;
+        margin-bottom: 5px;
+        color: #6D6D6D;
+    }
+
+        .glyphicon.spinning {
+        animation: spin 1s infinite linear;
+        -webkit-animation: spin2 1s infinite linear;
+    }
+
+    @keyframes spin {
+        from {
+            transform: scale(1) rotate(0deg);
+        }
+
+        to {
+            transform: scale(1) rotate(360deg);
+        }
+    }
+
+    @-webkit-keyframes spin2 {
+        from {
+            -webkit-transform: rotate(0deg);
+        }
+
+        to {
+            -webkit-transform: rotate(360deg);
+        }
+    }

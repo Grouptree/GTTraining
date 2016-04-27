@@ -1,0 +1,34 @@
+﻿<div class="panel panel-default" data-ng-controller="CommentsController as commentsCntrl" data-ng-show="commentsCntrl.allowsComments && (commentsCntrl.comments.length > 0 || commentsCntrl.isUserLoggedIn)">
+
+    <div class="panel-heading">
+        <h3>Comments</h3>
+    </div>
+
+    <div class="panel-body">
+        <div data-ng-if="commentsCntrl.isUserLoggedIn" class="form-group">
+            <textarea data-ng-model="commentsCntrl.newCommentText" class="form-control" style="min-width: 100%;"></textarea>
+
+            <span class="input-group-btn">
+                <button class="btn btn-default pull-right" data-ng-click="commentsCntrl.addComment()" style="margin-top: 5px;">
+                    <span class="glyphicon glyphicon-refresh spinning" data-ng-if="commentsCntrl.submittingComment"></span>
+                    Add Comment
+                </button>
+            </span>
+        </div>
+
+        <div class="panel panel-default" data-ng-repeat="comment in commentsCntrl.comments">
+            <div class="panel-heading news-comment-heading">
+                <h6>
+                    <span>{{comment.name}}</span>                                   
+                    <span data-ng-if="commentsCntrl.currentUserID === comment.userID" class="pull-right" style="margin-right: 10px; cursor: pointer;">
+                        <span class="fa fa-times" data-ng-click="commentsCntrl.deleteComment(comment.pointerID)" />
+                    </span>
+                </h6>                
+            </div>
+            <div class="panel-body">{{comment.text}}</div>
+        </div>
+    </div>
+
+</div>
+<script src="/app/comments/gt.comments-factory.js"></script>
+<script src="/app/comments/gt.comments-controller.js"></script>

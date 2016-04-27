@@ -1,0 +1,11 @@
+﻿@{                        
+    Grouptree.Core.Asset currentAsset = Grouptree.Web.API_Razor.CurrentAsset();
+
+    string imageURL = GT.Training.BL.NewsArticlesBL.GetNewsArticleImageURL(currentAsset);
+        
+    if(!String.IsNullOrWhiteSpace(imageURL))
+    {
+        var url = imageURL + "&W=350";
+        <img src="@url" />
+    }        
+}

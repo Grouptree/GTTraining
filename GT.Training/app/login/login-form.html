@@ -1,0 +1,25 @@
+﻿<form data-ng-controller="LoginFormController as loginFormCntrl">
+
+    <div class="alert" data-ng-class="{ 'alert-danger': !loginFormCntrl.loginResult.successful, 'alert-success': loginFormCntrl.loginResult.successful }"
+         data-ng-if="loginFormCntrl.attemptedLogin">
+        {{loginFormCntrl.loginResult.message}}
+    </div>
+
+    <div class="form-group">
+        <span class="form-group-addon">Username</span>
+        <input type="text" name="username" data-ng-model="loginFormCntrl.username" class="form-control" aria-describedby="sizing-addon1" />
+    </div>
+
+    <div class="form-group">
+        <span class="form-group-addon">Password</span>
+        <input type="password" data-ng-model="loginFormCntrl.password" class="form-control" name="password" aria-describedby="sizing-addon1" data-ng-keyup="$event.keyCode === 13 && loginFormCntrl.login()"  />
+    </div>
+
+    <button type="button" class="btn btn-default" data-ng-click="loginFormCntrl.login()">
+        Submit
+    </button>
+
+</form>
+
+<script src="/app/login/gt.loginForm-factory.js"></script>
+<script src="/app/login/gt.loginForm-controller.js"></script>

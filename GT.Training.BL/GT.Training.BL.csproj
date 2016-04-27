@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{AE5EE485-B605-4E04-974F-95AC5E3CC24C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>GT.Training.BL</RootNamespace>
+    <AssemblyName>GT.Training.BL</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Grouptree.Core">
+      <HintPath>..\Libraries\Grouptree.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AuthenticationBL.cs" />
+    <Compile Include="CommentsBL.cs" />
+    <Compile Include="Constants\AssetLinks.cs" />
+    <Compile Include="Constants\Comments.cs" />
+    <Compile Include="Constants\CustomProperties.cs" />
+    <Compile Include="Constants\NewsArticles.cs" />
+    <Compile Include="Constants\Subtypes.cs" />
+    <Compile Include="Constants\TwitterFeeds.cs" />
+    <Compile Include="Constants\Types.cs" />
+    <Compile Include="Constants\Users.cs" />
+    <Compile Include="DocumentsBL.cs" />
+    <Compile Include="Helpers\AssetsHelper.cs" />
+    <Compile Include="NavigationBL.cs" />
+    <Compile Include="NewsArticlesBL.cs" />
+    <Compile Include="PromosBL.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Helpers\SecurityTrimmingHelper.cs" />
+    <Compile Include="Helpers\UserAuthenticationHelper.cs" />
+    <Compile Include="SearchBL.cs" />
+    <Compile Include="TwitterFeedsBL.cs" />
+    <Compile Include="UserTagViewsBL.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GT.Training.Models\GT.Training.Models.csproj">
+      <Project>{234017b5-f9ab-452c-a37d-cbe414e7ef79}</Project>
+      <Name>GT.Training.Models</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

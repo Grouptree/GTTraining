@@ -1,0 +1,16 @@
+﻿<ol class="breadcrumb">
+    @{
+        List<Grouptree.Core.Asset> breadcrumbs = GT.Training.BL.NavigationBL.GetCurrentBreadcrumbs();
+        
+        foreach (Grouptree.Core.Asset asset in breadcrumbs)
+        {
+            <li>
+                <a href="@asset.GetNiceURL()">@asset.Name</a>
+            </li>
+        }
+
+        <li class="active">
+            @Grouptree.Web.API_Razor.CurrentAsset().Name
+        </li>        
+    }
+</ol>

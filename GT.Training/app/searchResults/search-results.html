@@ -1,0 +1,24 @@
+﻿<div data-ng-controller="SearchResultsController as searchResultsCntrl">
+    
+    <div class="list-group" data-ng-if="searchResultsCntrl.results.length > 0">
+               
+        <div class="list-group-item" data-ng-repeat="result in searchResultsCntrl.results">          
+            <a href="{{result.url}}">
+                <span>{{result.displayText}}</span>
+            </a>
+            <span class="badge">
+                <span class="fa {{result.iconClass}}" data-ng-if="result.iconClass"></span>
+            </span>
+        </div>
+
+        <div style="font-size: 12px; margin-left: 10px; margin-top: 10px;">
+            ({{searchResultsCntrl.results.length}}) results found matching your query.
+        </div>
+       
+    </div>    
+
+    <div data-ng-if="searchResultsCntrl.dataLoaded && searchResultsCntrl.results.length === 0">There are no results for your query.</div>
+</div>
+
+<script src="/app/searchResults/gt.searchResults-factory.js"></script>
+<script src="/app/searchResults/gt.searchResults-controller.js"></script>

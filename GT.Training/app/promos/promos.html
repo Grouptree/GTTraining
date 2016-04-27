@@ -1,0 +1,26 @@
+﻿<div class="list-group" data-ng-controller="PromosController as promosCntrl" data-ng-cloak data-ng-show="promosCntrl.promo">
+    <div class="list-group-item">
+        <div class="row">
+            <div class="col-lg-3">
+                <img src="#" data-ng-src="{{promosCntrl.promo.imageURL}}?W=92" data-ng-if="promosCntrl.promo.imageURL" />
+            </div>
+            <div class="col-lg-9">
+                {{promosCntrl.promo.name}}
+            </div>                         
+        </div>
+        <div class="row">
+            <div class="col-lg-9 col-lg-offset-3 small">
+                {{promosCntrl.getTags(promosCntrl.promo)}}
+            </div>
+        </div>   
+        <div class="row">
+            <div class="col-lg-2 col-lg-offset-7 pull-right">
+                <a href="#" data-ng-href="{{promosCntrl.promo.url}}" target="_blank">Goto</a>
+            </div>
+        </div>
+    </div>
+    <div data-ng-if="!promosCntrl.promo">There are no promos to display.</div>
+</div>
+
+<script src="/app/promos/gt.promo-factory.js"></script>
+<script src="/app/promos/gt.promo-controller.js"></script>

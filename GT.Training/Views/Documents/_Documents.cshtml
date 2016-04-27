@@ -1,0 +1,29 @@
+﻿@{
+    List<GT.Training.Models.Document> documents = GT.Training.BL.DocumentsBL.GetDocuments();
+    
+    if(documents.Any())
+    {
+        <div class="list-group">
+    
+        @foreach (GT.Training.Models.Document document in documents)
+        {
+            <div class="list-group-item">
+                <a href="@document.Link">                   
+                    <span>
+                        @document.Title                     
+                    </span>                 
+                </a>
+                <span class="badge">
+                    <span class="fa @document.IconClass"></span>
+                </span>      
+             
+            </div>
+        }
+
+        </div>
+    }
+    else {
+        <div>There are no documents to display.</div>
+    }
+            
+}

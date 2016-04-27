@@ -1,0 +1,37 @@
+﻿<script type="text/javascript">
+    (function (window) {
+
+        var gt = window.gt || (window.gt = {});
+
+        gt.pageContext = {
+            currentAssetPointerID: '@Grouptree.Web.API_Razor.CurrentAsset().PointerID',
+            currentAssetName: '@Grouptree.Web.API_Razor.CurrentAsset().Name',
+            currentUserAssetPointerID: '@(GT.Training.BL.UserAuthenticationHelper.IsUserAuthenticated() ? GT.Training.BL.UserAuthenticationHelper.GetCurrentUser().Asset.PointerID : string.Empty)',
+            currentUserID: '@(GT.Training.BL.UserAuthenticationHelper.IsUserAuthenticated() ? GT.Training.BL.UserAuthenticationHelper.GetCurrentUser().UserIDasString : string.Empty)'
+            };
+
+        gt.pageContext.isUserLoggedIn = gt.pageContext.currentUserAssetPointerID ? true : false;
+
+        jQuery(document).ready(function () {
+            jQuery.post('/Promos/UpdateUserTagViews', { currentAssetPointerID: gt.pageContext.currentAssetPointerID });
+        });
+
+        gt.pageContext.qs = function(name, url) {
+            if (!url) url = window.location.href;
+            name = name.replace(/[\[\]]/g, "\\$&");
+            var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)", "i"),
+                results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, " "));
+        };
+
+    })(window);
+</script>
+
+@{
+    if (!GT.Training.BL.AuthenticationBL.IsUserAllowedView(Grouptree.Web.API_Razor.CurrentAsset()))
+    {            
+       throw new UnauthorizedAccessException();               
+    }
+}

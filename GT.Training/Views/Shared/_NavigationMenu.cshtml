@@ -1,0 +1,40 @@
+﻿<div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+    </button>
+</div>
+<div class="navbar-collapse collapse">      
+    @{
+        var topNavigationAssets = GT.Training.BL.NavigationBL.RetrieveSecurityTrimmedLandingPagesInRoot();
+
+        if (topNavigationAssets.Any())
+        {
+            <ul class="nav navbar-nav">
+                @{                
+                    Grouptree.Core.Asset currentAsset = Grouptree.Web.API_Razor.CurrentAsset();
+
+                    foreach (Grouptree.Core.Asset asset in topNavigationAssets)
+                    {
+                        // The asset should be active if it is the currently selected asset or it is an ancestor of the currently selected asset
+                        bool isAssetActive = GT.Training.BL.AssetsHelper.AreSame(currentAsset, asset) || GT.Training.BL.AssetsHelper.IsAncestorOf(asset, currentAsset);
+
+                        <li class="@(isAssetActive ? "active" : "")">
+                            <a href="@asset.GetNiceURL()">@asset.Name</a>
+                        </li>
+                    }
+                }
+            </ul>
+        }
+    }
+
+    @if(GT.Training.BL.UserAuthenticationHelper.IsUserAuthenticated())
+    {
+        <ul class="nav navbar-nav navbar-right">            
+            <li style="float: right;">
+                <a href="/Account/Logout" title="Click to logout">Hello @GT.Training.BL.UserAuthenticationHelper.GetCurrentUser().FullName</a>
+            </li>
+        </ul>
+    }
+</div>

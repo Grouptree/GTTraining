@@ -1,0 +1,75 @@
+﻿@{    
+    List<GT.Training.Models.NewsArticle> articles = GT.Training.BL.NewsArticlesBL.GetNewsArticles();
+    
+    if (articles.Any())
+    {
+        <ul class="list-group">
+            @for (int i = 0; i < articles.Count; i++)
+            {
+                var article = articles[i];
+
+                if (i == 0)
+                {
+                    <li class="list-group-item">
+                        <a href="@article.URL" class="row">
+
+                            @{                             
+                                <span class="col-lg-7">
+                                    @if (!String.IsNullOrWhiteSpace(article.ImageURL))
+                                    {
+                                        var url = article.ImageURL + "&W=500";
+                                        <img src="@url" />
+                                    }
+                                </span>
+                                <span class="col-lg-5">
+                                    <span class="row">
+                                        <strong>
+                                            @article.Title
+                                        </strong>
+                                    </span>
+                                    <span class="row">@article.ArticleDate</span>
+
+                                    @{                                                                             
+                                        if (!String.IsNullOrWhiteSpace(article.TrimmedContent))
+                                        {                                            
+                                            <span class="row">@article.TrimmedContent</span>
+                                        }
+                                    }
+                                </span>
+                            }
+                        </a>
+                    </li>
+                }
+                else
+                {
+                   <li class="list-group-item">
+    
+                        <a href="@article.URL" class="row">
+    
+                            @{                           
+                                <span class="col-lg-4">
+                                    @if (!String.IsNullOrWhiteSpace(article.ImageURL))
+                                    {                    
+                                        string url = article.ImageURL + "&W=275";
+                                        <img src="@url" />
+                                    }
+                                </span>
+                                <span class="col-lg-8">
+                                    <span class="row">
+                                        <strong>
+                                            @article.Title
+                                         </strong>
+                                    </span>
+                                    <span class="row">@article.ArticleDate</span>
+                                </span>
+                            }
+
+                        </a>
+                    </li>
+                }
+
+            }
+        </ul>
+    }
+
+}

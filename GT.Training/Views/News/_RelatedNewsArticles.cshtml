@@ -1,0 +1,56 @@
+﻿@{
+
+    var currentAsset = Grouptree.Web.API_Razor.CurrentAsset();
+
+    if (currentAsset == null) {
+        return;
+    }
+
+    List<GT.Training.Models.NewsArticle> articles = GT.Training.BL.NewsArticlesBL.GetRelatedArticles(currentAsset);
+
+    if (articles.Any())
+    {
+          <ul class="list-group">
+              <li class="list-group-item">
+                  <h4 class="list-group-item-heading">
+                      Related Articles
+                  </h4> 
+              </li>
+
+              @foreach (GT.Training.Models.NewsArticle article in articles)
+              {
+                  <li class="list-group-item">
+                      <a href="@article.URL" class="row">
+
+                          @{                
+                              <span class="col-lg-4">
+                                  @if (!String.IsNullOrWhiteSpace(article.ImageURL))
+                                  {
+                                      string url = article.ImageURL + "&W=80";
+                                      <img src="@url" />
+                                  }
+                              </span>
+
+                              <span class="col-lg-8">
+                                  <strong>
+                                    @article.Title
+                                  </strong>                                                                          
+                                  <span class="row">                                    
+                                       @article.ArticleDate
+                                  </span>
+                                  <span class="row">
+                                       @if (article.Tags.Any())
+                                       {
+                                           String.Join(", ", article.Tags);
+                                       }                                                                            
+                                  </span>
+                              </span>
+                          }
+                      </a>
+                  </li>
+
+              }
+          </ul>           
+    }
+
+}

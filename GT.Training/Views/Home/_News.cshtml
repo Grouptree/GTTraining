@@ -1,0 +1,29 @@
+﻿@{        
+    List<GT.Training.Models.NewsArticle> articles = GT.Training.BL.NewsArticlesBL.GetNewsArticles();  
+    
+    if(articles.Any())
+    {
+        <ul class="list-group">
+            @foreach (GT.Training.Models.NewsArticle article in articles)
+            {
+                <li class="list-group-item">                   
+                    <a href="@article.URL" class="row">                        
+                        @{                    
+                            <span class="col-lg-4">
+                                @if (!String.IsNullOrWhiteSpace(article.ImageURL))
+                                {
+                                    var url = article.ImageURL + "&W=80";
+                                    <img src="@url" />
+                                }
+                            </span>
+
+                            <span class="col-lg-8">@article.Title</span>
+                        }                        
+                    </a>
+                </li>
+                    
+            }
+        </ul>
+    }
+
+}

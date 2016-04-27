@@ -1,0 +1,45 @@
+﻿@{
+    var selectedLandingPage = GT.Training.BL.NavigationBL.GetClosestLandingPage();
+
+    if (selectedLandingPage != null)
+    {
+        <div class="sidenav">
+
+            @{                
+                Grouptree.Core.Asset currentAsset = Grouptree.Web.API_Razor.CurrentAsset();
+
+                @helper BuildTree(Grouptree.Core.Asset parent, Grouptree.Core.Asset currentAsset)
+                {
+
+                    List<Grouptree.Core.Asset> sideNavItems = GT.Training.BL.NavigationBL.GetSideNavChildren(parent);
+
+                    if (sideNavItems == null || !sideNavItems.Any())
+                    {
+                        return;
+                    }
+
+                    <ul class="list-group">
+                        @foreach (Grouptree.Core.Asset childLandingPage in sideNavItems)
+                        {
+                            bool isActive = GT.Training.BL.AssetsHelper.AreSame(childLandingPage, currentAsset) || GT.Training.BL.AssetsHelper.IsAncestorOf(childLandingPage, currentAsset);
+
+                            <li class="list-group-item @(isActive ? "sidenav-active" : "")">
+
+                                <a href="@childLandingPage.GetNiceURL()">
+                                    @childLandingPage.Name
+                                </a>
+
+                                @BuildTree(childLandingPage, currentAsset)
+
+                            </li>
+                        }
+                    </ul>
+                }
+
+                @BuildTree(selectedLandingPage, currentAsset);
+            }
+
+        </div>
+    }
+
+}

@@ -1,0 +1,7 @@
+﻿@{
+    List<GT.Training.Models.TagViews> newsArticleTagViews = GT.Training.BL.NewsArticlesBL.GetArticleTagViews(Grouptree.Web.API_Razor.CurrentAsset().PointerID);
+
+    <div>
+        @String.Join(", ", newsArticleTagViews.Select(tagView => tagView.Tag + "(" + tagView.NumberOfViews + ")"));
+    </div>
+}
